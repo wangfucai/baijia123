@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<project name="Project" default="jar" basedir=".">
+
+	<property name="app.name" value="cn.nubia.watermark" />
+	<property name="app.dir" value="${basedir}" />
+	<property name="src.dir" value="${app.dir}/src" />	
+	<property name="webinfo.dir" value="${app.dir}/bin" />
+	<property name="build.bin.dir" value="${webinfo.dir}" />
+	<property name="build.jar.dir" value="${app.dir}/build/jar" />
+	<property name="build.src.dir" value="${app.dir}/build/src" />
+	<tstamp>
+		<format property="subversion" pattern="yyyy.MM.dd"/>
+	</tstamp>
+	<path id="build.classpath">
+		<fileset dir="${webinfo.dir}/lib">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement location="${build.bin.dir}" />
+	</path>
+	
+	<target name="compile">
+		<javac encoding="utf-8"  srcdir="${src.dir}" destdir="${build.bin.dir}" debug="off" deprecation="on" optimize="on" includes="**">
+			<compilerarg value="-Xlint:unchecked"/>
+			<classpath refid="build.classpath" />
+		</javac>
+	</target>
+	
+	<target name="jar">
+		<tstamp />
+		<delete file="${build.jar.dir}/${app.name}.${subversion}.jar" />
+		<jar destfile="${build.jar.dir}/${app.name}.${subversion}.jar">
+			<fileset dir="${build.bin.dir}">
+				<include name="**"/>
+			</fileset>
+		</jar>
+	</target>
+	
+</project>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis.xsd">
+
+	<context:component-scan base-package="com.ztemt.orderservice.*">
+		<context:include-filter type="regex" expression=".dao.*" />
+		<context:include-filter type="regex" expression=".service.*" />	
+	</context:component-scan>
+	<context:component-scan base-package="com.ztemt.redis.*">
+		<context:include-filter type="regex" expression=".service.listener*" />
+		<context:include-filter type="regex" expression=".service.*" />	
+	</context:component-scan>
+	
+	<context:component-scan base-package="com.ztemt.workflow.*">
+		<context:include-filter type="regex" expression=".dao.*" />
+		<context:include-filter type="regex" expression=".service.*" />	
+	</context:component-scan>
+	
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+	<bean id="propertyConfigurer"  
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+        <property name="locations">  
+            <list>  
+                <value>classpath:hibernate.properties</value>
+                <value>classpath:redis.properties</value>              
+            </list>  
+        </property>  
+    </bean>
+    <!-- redis连接池配置 -->
+     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis.pool.maxTotal}" />
+        <property name="maxIdle" value="${redis.pool.maxIdle}" />
+        <property name="maxWaitMillis" value="${redis.pool.maxWaitMillis}" />
+        <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/> 
+    </bean>
+
+   <!--  <bean id="jedisPool" class="redis.clients.jedis.JedisPool"  scope="singleton" destroy-method="destroy">
+        <constructor-arg ref="jedisPoolConfig" />    
+        <constructor-arg value="${redis.pool.host}" />    
+        <constructor-arg type="int" value="${redis.pool.port}" /> 
+    </bean> -->
+    <!-- 
+    <bean id="jedisClusterTemplate" class="com.ztemt.redis.service.impl.JedisClusterTemplate">
+		<property name="jedisCluster" ref="jedisCluster" />
+	</bean>
+    <bean id="jedisCluster" class="redis.clients.jedis.JedisCluster" scope="singleton" destroy-method="close">
+    	<constructor-arg index="0">
+    		<set> 
+    			<bean class="redis.clients.jedis.HostAndPort">
+    				<constructor-arg index="0">
+    					<value>${redis.pool.host}</value>
+    				</constructor-arg>
+    				<constructor-arg index="1">
+    					<value>${redis.pool.port}</value>
+    				</constructor-arg>
+    			</bean>  
+        	</set> 
+	    </constructor-arg>   
+	    <constructor-arg index="1" value="30"/>   
+	    <constructor-arg index="2" value="5"/>   
+	    <constructor-arg index="3" ref="jedisPoolConfig"/>   
+    </bean>
+     
+    
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<!-- Connection Info -->
+		<property name="driverClass" value="${database.driver}" />
+		<property name="jdbcUrl" value="${database.url}" />
+		<property name="user" value="${database.user}" />
+		<property name="password" value="${database.password}" />
+		<property name="minPoolSize" value="10" />
+        <property name="maxPoolSize" value="100" />
+        <property name="maxIdleTime" value="1800" />
+        <property name="acquireIncrement" value="2" />
+        <property name="maxStatements" value="0" />
+        <property name="initialPoolSize" value="2" />
+        <property name="idleConnectionTestPeriod" value="1800" />
+        <property name="acquireRetryAttempts" value="30" />
+        <property name="breakAfterAcquireFailure" value="true" />
+        <property name="testConnectionOnCheckout" value="false" />
+	</bean>
+  
+    <bean id="sessionFactory"
+        class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource" />       
+        <property name="hibernateProperties">
+            <props>  
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.format_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">none</prop>
+            </props>
+        </property>
+        <property name="packagesToScan">
+			<list>
+			    <value>com.ztemt.orderservice.model</value>
+			    <value>com.ztemt.workflow.model</value>				
+			</list>
+		</property>       
+    </bean>  
+      
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>  
+    
+    <bean id="SpringApplicationContext" class="com.ztemt.framework.common.ApplicationContextHelper"></bean>
+ 
+ 	
+    <tx:advice id="txadvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" propagation="REQUIRED" read-only="true" />   
+			<tx:method name="find*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="list*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="load*" propagation="REQUIRED" read-only="true" />  
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" /> 
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="Exception" />  
+			<tx:method name="save" propagation="REQUIRED" rollback-for="Exception" />     
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />    
+			<tx:method name="update" propagation="REQUIRED"  rollback-for="Exception" /> 
+			<tx:method name="delete*" propagation="REQUIRED"  rollback-for="Exception" />           
+			<tx:method name="delete" propagation="REQUIRED"  rollback-for="Exception" /> 
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut id="allServiceMethod"
+			expression="execution(* com.ztemt..*..service.*.*(..))" />
+		<aop:advisor pointcut-ref="allServiceMethod" advice-ref="txadvice" />
+	</aop:config>
+	 -->
+</beans>
