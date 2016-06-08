@@ -12,3 +12,4 @@ Memoizer2->用ConcurrentHashMap替换HashMap
 Memoizer3->基于FutureTask的Memoizing封装器
 Memoizer->Memoizer的最终实现
 
+
