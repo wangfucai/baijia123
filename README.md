@@ -136,4 +136,13 @@ EagerInitialization->提前初始化
 
 ResourceFactory->延长初始化占位类模式
 
+2016-08-16 新增jdk和CGLIB动态代理、RPC的简单例子
+
+对应类包：com.baijia123.rpc->使用动态代理简单实现RPC功能
+
+对应类包com.baijia123.proxy
+
+BookFacadeCglib->使用CGLIB动态代理，应用于没有实现接口的类
+CountProxy->静态代理，在编译期间就已经存在
+DynamicProxy->JDK动态代理，应用于实现接口的类
 
