@@ -146,3 +146,5 @@ BookFacadeCglib->使用CGLIB动态代理，应用于没有实现接口的类
 CountProxy->静态代理，在编译期间就已经存在
 DynamicProxy->JDK动态代理，应用于实现接口的类
 
+2016-09-19 新增RMI相关例子
+对应包名com.baijia123.rmi
