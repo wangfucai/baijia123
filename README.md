@@ -150,3 +150,6 @@ DynamicProxy->JDK动态代理，应用于实现接口的类
 
 2016-09-19 新增RMI相关例子
 对应包名com.baijia123.rmi
+
+2016-12-08 新增Guava相关例子
+对应包名com.baijia123.guava
