@@ -157,3 +157,8 @@ DynamicProxy->JDK动态代理，应用于实现接口的类
 2016-12-12 新增Stream相关例子
 对应包名com.baijia123.java8
 
+2017-02-16 新增堆外内存的测试例子
+对应包名com.baijia123.offheap
+
+2017-02-22 新增LDAP相关例子
+对应包名com.baijia123.ldap
