@@ -162,3 +162,6 @@ DynamicProxy->JDK动态代理，应用于实现接口的类
 
 2017-02-22 新增LDAP相关例子
 对应包名com.baijia123.ldap
+
+2017-03-07 新增JMX相关例子
+对应包名com.baijia123.jmx
