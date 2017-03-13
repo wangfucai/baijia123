@@ -165,3 +165,6 @@ DynamicProxy->JDK动态代理，应用于实现接口的类
 
 2017-03-07 新增JMX相关例子
 对应包名com.baijia123.jmx
+
+2017-03-13 新增闭锁、栅栏、callable和final相关例子
+对应包名com.baijia123.concurrent.latch\barrier\finaltest\runnable
