@@ -111,7 +111,7 @@ public class TestDynamic implements DynamicMBean {
     public MBeanInfo getMBeanInfo() {
         // TODO Auto-generated method stub
         MBeanAttributeInfo[] dAttributes = new MBeanAttributeInfo[] { new MBeanAttributeInfo("name", "String", "»º´æÃû³Æ", true, true, false) };
-        MBeanOperationInfo opers[] = { new MBeanOperationInfo("printName", "print", null, "void", MBeanOperationInfo.ACTION) };
+        MBeanOperationInfo opers[] = { new MBeanOperationInfo("printName", "print", null, "void", MBeanOperationInfo.ACTION)};
 
         MBeanInfo info = new MBeanInfo(this.getClass().getName(), "TestDynamic", dAttributes, null, opers, null);
         return info;
