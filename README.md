@@ -171,3 +171,6 @@ DynamicProxy->JDK动态代理，应用于实现接口的类
 
 2017-03-30 增加安全发布类
 对应包名com.baijia123.safepublic
+
+2017-04-11 增加通知类和反射类
+对应报名com.baijia123.notify\reflect
