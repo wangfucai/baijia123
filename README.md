@@ -173,4 +173,13 @@ DynamicProxy->JDK动态代理，应用于实现接口的类
 对应包名com.baijia123.safepublic
 
 2017-04-11 增加通知类和反射类
-对应报名com.baijia123.notify\reflect
+对应包名com.baijia123.notify\reflect
+
+2017-06-20 增加防XSS跨站脚本攻击代码
+对应包名com.baijia123.xss
+
+2017-06-20 增加lombok测试代码
+对应包名com.baijia123.lombok
+
+2017-06-20 增加javacc的词法语法分析文本rcc.jj（来源于zookeep-jute）
+对应包名com.baijia123.javacc
