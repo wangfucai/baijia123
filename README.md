@@ -183,3 +183,9 @@ DynamicProxy->JDK动态代理，应用于实现接口的类
 
 2017-06-20 增加javacc的词法语法分析文本rcc.jj（来源于zookeep-jute）
 对应包名com.baijia123.javacc
+
+2017-07-19 增加exchange支持两个线程之间交换数据
+对应包名com.baijia123.thread
+
+2017-07-19 增加java8 lambda和stream测试用例
+对应包名com.baijia123.java8.lambda和com.baijia123.java8.stream
