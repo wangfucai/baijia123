@@ -192,3 +192,6 @@ DynamicProxy->JDK动态代理，应用于实现接口的类
 
 2017-07-24 增加unsafe类以及bloomfilter布隆过滤器实现类
 对应包名com.baijia123.unsafe.util和com.baijia123.bloom
+
+2017-07-24 增加string和bean之间的转换函数
+对应包名com.baijia123.beanmap
