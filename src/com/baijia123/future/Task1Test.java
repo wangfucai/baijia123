@@ -20,16 +20,18 @@ public class Task1Test {
         Thread thread = new Thread(futureTask);
         thread.start();
         
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e1) {
-            e1.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e1) {
+//            e1.printStackTrace();
+//        }
          
         System.out.println("主线程在执行任务");
          
         try {
             System.out.println("task运行结果"+futureTask.get());
+            //Thread.sleep(2000);
+            System.out.println("task运行结果=="+futureTask.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
