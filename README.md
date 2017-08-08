@@ -1,7 +1,7 @@
 # baijia123
-#JAVA并发编程实战的示例及其他
+# JAVA并发编程实战的示例及其他
 
-##第5章：基础构建模块
+## 第5章：基础构建模块
 
 对应类包com.baijia123.concurrent
 
@@ -21,7 +21,7 @@ Memoizer3->基于FutureTask的Memoizing封装器
 
 Memoizer->Memoizer的最终实现
 
-##第6章：任务执行 对应类包com.baijia123.executor
+## 第6章：任务执行 对应类包com.baijia123.executor
 
 TaskExecutionWebServer->基于线程池的Web服务器
 
@@ -35,7 +35,7 @@ Renderer->使用CompleteService，使页面元素在下载外城后立即显示�
 
 TravelQuote->在预订时间内请求旅游报价
 
-##第7章：取消与关闭
+## 第7章：取消与关闭
 
 对应类包：com.baijia123.interrupt
 
@@ -63,7 +63,7 @@ WebCrawler->使用TrackingExecutorService来保存未完成的任务以备后续
 
 UEHLogger->将异常写入日志的UncaughtExceptionHandler
 
-##第8章：线程池的使用
+## 第8章：线程池的使用
 
 对应类包：com.baijia123.threadpool
 
@@ -77,13 +77,13 @@ TimingThreadPool->增加了日志和计时等功能的线程池
 
 ValueLatch->携带结果的闭锁
 
-##第10章：避免活跃性危险
+## 第10章：避免活跃性危险
 
 对应类包：com.baijia123.deadlock
 
 Dispatcher和Taxi->通过公开调用来避免在相互协作的对象之间产生死锁
 
-##第11章：性能与可伸缩性
+## 第11章：性能与可伸缩性
 
 对应类包：com.baijia123.extension
 
@@ -93,7 +93,7 @@ ServerStatus2->将ServerStatus重新改写为使用锁分解技术
 
 StripedMap->在基于散列的Map中使用锁分段技术
 
-##第13章：显式锁
+## 第13章：显式锁
 
 对应类包：com.baijia123.reentrantlock
 
@@ -101,7 +101,7 @@ ReadWriteMap->用读-写锁来包装Map
 
 BoundedBuffer->使用条件队列实现的有界缓存
 
-##第14章：构建自定义的同步工具
+## 第14章：构建自定义的同步工具
 
 对应类包：com.baijia123.synctool
 
@@ -111,7 +111,7 @@ GrumpyBoundedBuffer->当不满足前提条件时，有界缓存不会执行相�
 
 SleepyBoundedBuffer->使用简单阻塞实现的有界缓存
 
-##第15章：原子变量与非阻塞同步机制
+## 第15章：原子变量与非阻塞同步机制
 
 对应类包：com.baijia123.atomic
 
@@ -125,7 +125,7 @@ ConcurrentStatck->使用Treiber算法构造的非阻塞栈
 
 LinkedQueue->非阻塞算法中的插入算法
 
-##第16章：JAVA内存模型
+## 第16章：JAVA内存模型
 
 对应类包：com.baijia123.lazyinitial
 
@@ -135,7 +135,7 @@ EagerInitialization->提前初始化
 
 ResourceFactory->延长初始化占位类模式
 
-##新增示例
+## 新增示例
 
 2016-08-16 新增jdk和CGLIB动态代理、RPC的简单例子
 
