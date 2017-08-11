@@ -184,4 +184,11 @@ DynamicProxy->JDK动态代理，应用于实现接口的类
 2017-08-08 增加位运算、类加载、forkjoin框架、lock、proxy动态代理、反射测试、正则表达式、Thread以及unsafe类测试 对应包名com.baijia123.bit\com.baijia123.classloader\com.baijia123.concurrent.forkjoin\com.baijia123.lock\com.baijia123.proxy.jdk, com.baijia123.reflect\com.baijia123.reg\com.baijia123.test\com.baijia123.thread\com.baijia123.unsafe
 
 2017-08-10 增加future的测试demo 对应包名com.baijia123.future
-2017-08-10 增加引用类的测试demo 对应报名com.baijia123.ref
+
+2017-08-10 增加引用类的测试demo 对应包名com.baijia123.ref
+
+2017-08-11 新增object的wait\notify测试例子 对应包名com.baijia123.notify
+
+2017-08-11 增加非阻塞算法实现 对应包名com.baijia123.nonblocking
+
+2017-08-11 新增completablefuture的测试例子 对应包名com.baijia123.future
