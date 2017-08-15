@@ -192,3 +192,5 @@ DynamicProxy->JDK动态代理，应用于实现接口的类
 2017-08-11 增加非阻塞算法实现 对应包名com.baijia123.nonblocking
 
 2017-08-11 新增completablefuture的测试例子 对应包名com.baijia123.future
+
+2017-08-15 增加phaser移相器(阶段器) 对应包名com.baijia123.phaser
