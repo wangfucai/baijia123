@@ -48,6 +48,11 @@ public class BitTest {
         final int SHORTTEST   = 0x0001ffff;
         System.out.println("0x0001ffff = " + SHORTTEST);
         System.out.println("short 0x0000ffff = " + (short)SHORTTEST);
+        
+        int registrations = 1;
+        int  PARTIES_SHIFT   = 16;
+        long adjust = ((long)registrations << PARTIES_SHIFT) | registrations;
+        System.out.println("adjust = " + adjust);
     }
 
 }

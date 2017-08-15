@@ -30,7 +30,8 @@ public class CompletableFutureDemo {
         try {
              //方式一：循环创建CompletableFuture list,调用sequence()组装返回一个有返回值的CompletableFuture，返回结果get()获取
             for (int i = 0; i < taskList.size(); i++) {
-                final int j = i + 1;
+                //final int j = i + 1;
+                final int j = taskList.get(i);
                 CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> calc(j), exs)// 异步执行
                         .thenApply(e -> Integer.toString(e))// Integer转换字符串 thenAccept只接受不返回不影响结果
                         .whenComplete((v, e) -> {// 如需获取任务完成先手顺序，此处代码即可
