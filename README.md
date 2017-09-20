@@ -200,3 +200,5 @@ DynamicProxy->JDK动态代理，应用于实现接口的类
 2017-09-03 增加文件操作例子、工具类以及测试类例子 对应包名com.baijia123.util\com.baijia123.file\com.baijia123.test
 
 2017-09-18 增加集合框架测试例子 对应包名com.baijia123.collections
+
+2017-09-20 测试
