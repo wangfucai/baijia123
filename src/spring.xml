@@ -13,7 +13,13 @@
 		http://www.springframework.org/schema/aop
 		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 		http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis.xsd">
-		
-		
+
+
+	<bean name="helloWorld" class="com.baijia123.spring.context.HelloWorld">
+		<property name="word" value="hello world" />
+	</bean>
+
+	<bean id="tradeContextListener" class="com.baijia123.spring.context.TradeContextListener"/>
+
 </beans>
 		

@@ -78,10 +78,10 @@ public class FunctionalInterfaceTest {
         stringCollection.stream().map(String::toUpperCase).sorted((a, b) -> b.compareTo(a)).forEach(System.out::println);
 
         boolean anyStartsWithA = stringCollection.stream().anyMatch((s) -> s.startsWith("a"));
-        System.out.println(anyStartsWithA);
+        System.out.println("1 = " + anyStartsWithA);
 
         boolean allStartsWithA = stringCollection.stream().allMatch((s) -> s.startsWith("a"));
-        System.out.println(allStartsWithA);
+        System.out.println("2 = " + allStartsWithA);
 
         boolean noneStartsWithZ = stringCollection.stream().noneMatch((s) -> s.startsWith("z"));
         System.out.println(noneStartsWithZ); // true
